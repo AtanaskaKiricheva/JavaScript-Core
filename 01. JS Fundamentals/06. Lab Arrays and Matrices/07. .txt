@@ -1,0 +1,7 @@
+
+function result(array) {
+    array = array.sort(function(a,b) {return a-b});
+    for (let i = 0; i < 2; i++) {
+    console.log(array[i]);
+    }
+}

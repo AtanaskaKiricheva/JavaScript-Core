@@ -1,0 +1,10 @@
+
+function result(array) {
+    let seq = [];
+    for (let i = 0; i < array.length; i++) {
+        if (i % 2 !== 0) {
+            seq.push(array[i] + array[i]);
+        }
+    }
+    console.log(seq.reverse().join(' '));
+}
