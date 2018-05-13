@@ -1,0 +1,9 @@
+
+function result(num) {
+    num = Number(num);
+    let s = "";
+    for (let i = 1; i <= num; i++) {
+        s += i;
+    }
+    console.log(s);
+}

@@ -1,0 +1,10 @@
+
+function result(str,lett) {
+    let sum = 0;
+    for (let letter of str) {
+        if (letter === lett) {
+            sum++;
+        }
+    }
+    console.log(sum);
+}
