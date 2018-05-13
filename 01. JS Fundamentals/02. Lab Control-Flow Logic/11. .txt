@@ -1,0 +1,5 @@
+function result(a) {
+    for (let item of a) {
+        console.log(Math.log2(item));
+    }
+}

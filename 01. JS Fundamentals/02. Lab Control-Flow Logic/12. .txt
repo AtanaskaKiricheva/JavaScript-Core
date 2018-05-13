@@ -1,0 +1,10 @@
+function result(a) {
+    let prime = true;
+    for (let i = 2; i < Math.sqrt(a); i++) {
+        if (a % i == 0) {
+            prime = false;
+            break;
+        }
+    }
+    return prime&& (a>1);
+}

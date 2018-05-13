@@ -1,0 +1,5 @@
+
+function result(a) {
+    console.log(Math.PI*a*a);
+    console.log(Math.round((Math.PI*a*a)*100)/100);
+}
