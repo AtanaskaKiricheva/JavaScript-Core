@@ -1,0 +1,13 @@
+function result(array) {
+    let sum = 0;
+    let concat = '';
+    let rev = 0;
+    for (let i = 0; i < array.length; i++) {
+        sum += Number(array[i]);
+        concat+=array[i];
+        rev+=1/Number(array[i]);
+    }
+    console.log(sum);
+    console.log(rev);
+    console.log(concat);
+}
