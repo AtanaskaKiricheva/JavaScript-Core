@@ -1,0 +1,5 @@
+
+function result(input) {
+    let arr = input.sort().sort((a, b) => a.length > b.length);
+    arr.forEach(x => console.log(x));
+}

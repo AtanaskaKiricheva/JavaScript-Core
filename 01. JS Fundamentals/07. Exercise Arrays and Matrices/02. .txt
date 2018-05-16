@@ -1,0 +1,9 @@
+
+function result(input) {
+    let step = input.pop();
+    for (let i = 0; i < input.length; i++) {
+        if (i % step === 0) {
+            console.log(input[i]);
+        }
+    }
+}
