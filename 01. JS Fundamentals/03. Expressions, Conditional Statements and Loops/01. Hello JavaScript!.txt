@@ -1,0 +1,4 @@
+
+function htmlEscape(input) {
+    console.log('Hello, '+input+', I am JavaScript!');
+}

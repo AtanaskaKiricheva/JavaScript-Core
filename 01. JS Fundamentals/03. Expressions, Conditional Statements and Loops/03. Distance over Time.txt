@@ -1,0 +1,10 @@
+
+function htmlEscape(input) {
+    let v1 = input[0];
+    let v2 = input[1];
+    let t = input[2];
+    let hours = t/60/60;
+    let s1 = v1*hours;
+    let s2 = v2*hours;
+    console.log(Math.abs(s1-s2)*1000);
+}

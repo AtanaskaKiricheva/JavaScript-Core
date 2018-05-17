@@ -1,0 +1,16 @@
+
+function solve(a, b, c) {
+
+let x1 = (-b+Math.sqrt(Math.pow(b,2)-4*a*c))/(2*a);
+let x2 = (-b-Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a);
+
+    if (x1 !== x2 && !isNaN(x1) && !isNaN(x2)) {
+        console.log(Math.min(x1, x2));
+        console.log(Math.max(x1, x2));
+    }
+    else if (x1 === x2) {
+        console.log(x1);
+    }
+    else
+        console.log('No');
+}
