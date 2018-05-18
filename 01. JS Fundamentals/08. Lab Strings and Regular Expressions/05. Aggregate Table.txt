@@ -1,0 +1,12 @@
+
+function result(input) {
+    let arr = [];
+    let sum = 0;
+
+    for (let word of input) {
+        let townData = word.split('|'),townName = townData[1].trim(),income= Number(townData[2].trim());
+        arr.push(townName);
+        sum+=income;
+    }
+    console.log(arr.join(', ')+'\n'+sum);
+}

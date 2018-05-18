@@ -1,0 +1,16 @@
+"use strict";
+let sentence = 'The quick brown fox jumps over the lay dog.';
+let key = 'the';
+
+function result(key , sentence) {
+    let counter = 0;
+    let index = sentence.indexOf(key);
+    while (index!=-1){
+        counter++;
+        index=sentence.indexOf(key,index+1);
+    }
+
+    console.log(counter);
+}
+
+result(key,sentence);

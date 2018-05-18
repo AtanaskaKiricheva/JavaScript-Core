@@ -1,0 +1,11 @@
+"use strict";
+let input = 'Hello, World!';
+
+function result(input) {
+    for (let i = 0; i < input.length; i++) {
+        console.log(`str[${i}] -> `+input[i]);
+    }
+
+}
+
+result(input);

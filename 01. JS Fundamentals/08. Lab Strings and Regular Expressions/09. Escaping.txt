@@ -1,0 +1,19 @@
+'use strict';
+let input = ['<b>unescaped text</b>', 'normal text'];
+
+function htmlEscape(input) {
+    for (let i = 0; i < input.length; i++) {
+        input[i] = input[i].replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39');
+    }
+    console.log('<ul>');
+    for (let item of input) {
+        console.log('  <li>' + item + '</li>');
+    }
+    console.log('</ul>');
+}
+
+htmlEscape(input);

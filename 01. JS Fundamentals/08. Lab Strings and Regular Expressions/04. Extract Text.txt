@@ -1,0 +1,17 @@
+"use strict";
+let input = 'Rakiya (Bulgarian brandy) is self-made liquor (alcoholic drink)';
+
+function result(input) {
+    let regex = new RegExp(/\((.*?)\)/g);
+
+    let string =[];
+
+    let match = regex.exec(input);
+    while (match != null) {
+        string.push(match[1]);
+        match = regex.exec(input);
+    }
+    console.log(string.join(', '));
+}
+
+result(input);
