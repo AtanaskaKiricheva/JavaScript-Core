@@ -1,0 +1,16 @@
+let array = ['20', '30', '40'];
+
+function result(array) {
+    let concat = "";
+    for (let i = 0; i < array.length; i++) {
+        if (i == 0) {
+            concat += array[i];
+        }
+        else if (i % 2 == 0) {
+            concat += " " + array[i];
+        }
+    }
+    console.log(concat);
+}
+
+result(array);

@@ -1,0 +1,5 @@
+function result(array) {
+    let k = array.shift(); //cut first element
+    console.log(array.slice(0,k).join(' ')); //from start to k
+    console.log(array.slice(array.length-k,array.length).join(' ')); //from k to end 
+}
