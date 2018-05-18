@@ -1,7 +1,0 @@
-
-function result(matrix) {
-    let biggest = Number.NEGATIVE_INFINITY;
-    matrix.forEach(row => row.forEach(column => biggest = Math.max(biggest, column)));
-    console.log(biggest);
-
-}

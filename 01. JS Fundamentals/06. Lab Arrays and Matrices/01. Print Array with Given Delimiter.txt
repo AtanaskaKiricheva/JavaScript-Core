@@ -1,6 +1,0 @@
-let array = ['20', '30', '40'];
-function result(array) {
-    console.log(Number(array[0])+Number(array[array.length-1]));
-
-}
-result(array);
