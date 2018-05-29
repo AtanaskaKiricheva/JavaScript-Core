@@ -1,0 +1,32 @@
+function result(input) {
+    console.log('<table>');
+
+    let str = '<tr>';
+    let parse = JSON.parse(input);
+    let keysArr = Object.keys(parse[0]);
+    for (let i = 0; i < keysArr.length; i += 2) {
+        str += '<th>' + keysArr[i] + '</th>'
+        if (keysArr[i + 1] !== undefined) {
+            str += '<th>' + keysArr[i + 1] + '</th>';
+        }
+    }
+    str += '</tr>';
+    console.log(str);
+
+    for (let i = 0; i < parse.length; i++) {
+        let arr = Object.values(parse[i]);
+
+        for (let i = 0; i < arr.length; i++) {
+            arr[i] = arr[i].toString().replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+        let log = '   <tr><td>' + arr.join('</td><td>');
+        console.log(log + '</td></tr>');
+
+    }
+
+    console.log('</table>');
+}

@@ -1,0 +1,10 @@
+function result(input) {
+    let arr = [];
+
+    for (let item of input.slice(1)) {
+        let [empty, name, lat, lon] = item.split(/\s*\|\s*/);
+        let obj = {Town: name, Latitude: Number(lat), Longitude: Number(lon)};
+        arr.push(obj);
+    }
+    console.log(JSON.stringify(arr));
+}

@@ -1,0 +1,19 @@
+function result(input) {
+    console.log('<table>');
+    console.log('<tr><th>name</th><th>score</th></tr>');
+
+
+    let arr = JSON.parse(input);
+    for (let obj of arr) {
+
+            obj['name'] = obj['name'].replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+
+        console.log('   <tr><td>' + obj['name'] + '</td><td>' + obj['score'] + '</td></tr>');
+    }
+
+    console.log('</table>');
+}

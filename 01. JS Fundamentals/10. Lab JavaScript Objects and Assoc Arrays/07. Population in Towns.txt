@@ -1,0 +1,18 @@
+function result(input) {
+    let obj = {};
+    for (let i = 0; i < input.length; i ++) {
+        let split = input[i].split(/ <-> /);
+        let [town, income] = [split[0], Number(split[1])];
+        if (obj[town] === undefined) {
+            obj[town] = income;
+        }
+        else obj[town] += income;
+    }
+    let str = '';
+    for (let p in obj) {
+        if (obj.hasOwnProperty(p)) {
+            str += p + ' : ' + obj[p] + '\n';
+        }
+    }
+    console.log(str);
+}

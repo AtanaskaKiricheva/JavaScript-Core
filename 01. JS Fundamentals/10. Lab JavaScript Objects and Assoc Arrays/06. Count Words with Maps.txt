@@ -1,0 +1,18 @@
+
+function result(input) {
+    let words = new Map();
+    let str = input[0].split(/\W+/g).filter(x => x !== '');
+
+    for (let word of str) {
+        word = word.toLowerCase();
+        if (!words.has(word)) {
+            words.set(word, 1);
+        }
+        else {
+            words.set(word, words.get(word) + 1);
+        }
+    }
+    for (let [key, value] of Array.from(words).sort()) {
+        console.log("'" + key + "'" + ' -> ' + value + " times");
+    }
+}

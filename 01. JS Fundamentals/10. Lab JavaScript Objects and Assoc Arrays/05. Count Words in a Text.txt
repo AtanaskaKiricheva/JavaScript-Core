@@ -1,0 +1,14 @@
+
+function result(input) {
+    let words = {};
+    let str = input[0].split(/\W+/g).filter(x=>x!=='');
+
+    for (let word of str) {
+        if (!words.hasOwnProperty(word)) {
+            words[word] = 1;
+        }
+        else
+            words[word]++;
+    }
+    console.log(JSON.stringify(words));
+}

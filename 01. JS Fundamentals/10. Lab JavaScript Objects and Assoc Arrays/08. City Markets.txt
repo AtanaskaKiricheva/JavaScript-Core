@@ -1,0 +1,23 @@
+function result(input) {
+    let towns = new Map();
+
+    for (let str of input) {
+        let [town, item, value] = str.split(/ -> /);
+        let [quantity, price] = value.split(/ : /).map(s => Number(s));
+        if (!towns.has(town)) {
+            towns.set(town, new Map());
+        }
+        let income = quantity * price;
+        let old = towns.get(town).get(item);
+        if (old) {
+            income += old;
+        }
+        towns.get(town).set(item, income);
+    }
+    for (let [key, value] of towns) {
+        console.log('Town - ' + key);
+        for (let [item, sum] of value) {
+            console.log('$$$' + item + ' : ' + sum);
+        }
+    }
+}
