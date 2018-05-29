@@ -1,0 +1,13 @@
+function result(main, substr) {
+
+    main = main.split('').reverse().join('');
+    substr = substr.split('').reverse().join('');
+
+    let isEqual = true;
+    for (let i = 0; i < substr.length; i++) {
+        if (main[i] !== substr[i]) {
+            isEqual = false;
+        }
+    }
+    console.log(isEqual);
+}

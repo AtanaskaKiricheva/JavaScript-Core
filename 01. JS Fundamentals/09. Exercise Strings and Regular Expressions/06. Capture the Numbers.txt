@@ -1,0 +1,13 @@
+function result(arr) {
+    let input = arr.join('');
+    let regex = /([0-9]+)/g;
+    let str = [];
+    let match = regex.exec(input);
+
+    while (match != null){
+        str.push(match[1]);
+        match = regex.exec(input);
+    }
+
+    console.log(str.join(' '));
+}

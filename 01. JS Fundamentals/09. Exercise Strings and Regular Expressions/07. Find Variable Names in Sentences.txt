@@ -1,0 +1,12 @@
+function result(arr) {
+    let regex = /\b_(\w+)\b/g;
+    let str = [];
+    let match = regex.exec(arr);
+
+    while (match){
+        str.push(match[1]);
+        match = regex.exec(arr);
+    }
+
+    console.log(str.join(','));
+}

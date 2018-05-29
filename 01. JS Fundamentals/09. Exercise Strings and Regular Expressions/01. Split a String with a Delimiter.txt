@@ -1,0 +1,6 @@
+function spiralMatrix(text, delimiter) {
+
+    let arr = text.split(delimiter);
+
+    arr.forEach(a=> console.log(a));
+}

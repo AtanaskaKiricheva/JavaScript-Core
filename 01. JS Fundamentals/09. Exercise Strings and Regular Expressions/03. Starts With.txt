@@ -1,0 +1,10 @@
+function result(main, substr) {
+
+    let isEqual = true;
+    for (let i = 0; i < substr.length; i++) {
+        if (main[i] !== substr[i]) {
+            isEqual = false;
+        }
+    }
+    console.log(isEqual);
+}

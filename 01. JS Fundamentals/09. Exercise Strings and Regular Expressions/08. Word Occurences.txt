@@ -1,0 +1,12 @@
+function result(sentence, word) {
+    word = '\\b' + word + '\\b';
+    let regex = new RegExp(word, 'gi');
+
+    let arr = [];
+    let match = regex.exec(sentence);
+    while (match !== null) {
+        arr.push(match);
+        match = regex.exec(sentence);
+    }
+    console.log(arr.length);
+}

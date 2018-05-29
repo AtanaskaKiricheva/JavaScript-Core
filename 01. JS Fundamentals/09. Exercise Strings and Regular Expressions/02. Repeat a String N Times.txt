@@ -1,0 +1,5 @@
+function spiralMatrix(text, repeatTimes) {
+
+    console.log(text.repeat(repeatTimes));
+
+}
