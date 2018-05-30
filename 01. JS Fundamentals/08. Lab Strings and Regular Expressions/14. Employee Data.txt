@@ -1,0 +1,15 @@
+let input = ['Jonathan - 2000 - Manager', 'Peter - 1000- Chuck', 'George - 1000 - Team Leader'];
+
+function result(input) {
+    let re = /^([A-Z][a-zA-Z]*) - ([1-9][0-9]*) - ([a-zA-Z0-9- ]+)$/;
+
+    for (let item of input) {
+        if (re.test(item)) {
+            console.log('Name: '+re.exec(item)[1]);
+            console.log('Position: '+re.exec(item)[3]);
+            console.log('Salary: '+re.exec(item)[2]);
+        }
+    }
+}
+
+result(input);

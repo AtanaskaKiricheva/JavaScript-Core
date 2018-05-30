@@ -1,0 +1,13 @@
+
+function result(username,email,phoneNumber,text) {
+    let usernameRe = new RegExp(/<![a-zA-Z]+!>/);
+    let emailRe = new RegExp(/<@[a-zA-Z]+@>/);
+    let phoneRe = new RegExp(/<\+[a-zA-Z]+\+>/);
+
+    text.forEach(line => {
+        line = line.replace(new RegExp(usernameRe, 'g'), username);
+        line = line.replace(new RegExp(emailRe, 'g'), email);
+        line = line.replace(new RegExp(phoneRe, 'g'), phoneNumber);
+        console.log(line);
+    });
+}

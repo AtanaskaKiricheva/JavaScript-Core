@@ -1,0 +1,5 @@
+function longest(input) {
+    let arr = input.split(/[^\w]+/g);
+    arr = arr.filter(x=>x!=='');
+    console.log(arr.join('|'));
+}

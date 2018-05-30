@@ -1,0 +1,19 @@
+let input = ['I dont know what to test anymore so here are some random dates.','15-May-1996','21-June-1995','31-February-3000','woops that was invalid...','111-Nov-2332 ','01-January-0001'];
+
+function result(input) {
+    let re = new RegExp(/\b[0-9]{1,2}-[A-Z][a-z]{2}-[0-9]{4}\b/g);
+    let string = input.join(' ');
+    let arr = string.match(re);
+
+    for (let item of arr) {
+
+        let split = item.split('-');
+        let day = split[0];
+        let month = split[1];
+        let year = split[2];
+
+        console.log(item + ` (Day: ${day}, Month: ${month}, Year: ${year})`);
+    }
+}
+
+result(input);

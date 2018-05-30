@@ -1,0 +1,6 @@
+
+function result(input) {
+    let arr = input.split(/\s+?|;+?|\(+?|\)+?|\.+?|,+?/g).filter(x => x !== '');
+
+    arr.forEach(x => console.log(x))
+}
