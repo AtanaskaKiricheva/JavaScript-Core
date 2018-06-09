@@ -1,0 +1,14 @@
+
+function result(input) {
+
+    console.log("<table>");
+    for (let obj of input) {
+        obj = JSON.parse(obj);
+        console.log("   <tr>");
+        console.log("       <td>" + obj.name + "</td>");
+        console.log("       <td>" + obj.position + "</td>");
+        console.log("       <td>" + obj.salary + "</td>");
+        console.log("   <tr>");
+    }
+    console.log("</table>");
+}

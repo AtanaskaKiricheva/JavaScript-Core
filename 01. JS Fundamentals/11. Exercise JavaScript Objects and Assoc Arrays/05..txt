@@ -1,0 +1,28 @@
+
+function result(input) {
+    let result = new Map();
+
+    for (let line of input) {
+        line = line.split(' | ');
+        let brand = line[0];
+        let model = line[1];
+        let quantity = Number(line[2]);
+
+        if (!result.has(brand)) {
+            result.set(brand, new Map());
+        }
+        if (!result.get(brand).has(model)) {
+            result.get(brand).set(model, quantity);
+        }
+        else {
+            result.get(brand).set(model,result.get(brand).get(model)+quantity);
+        }
+    }
+
+    for (let [k, v] of result) {
+        console.log(k);
+        for (let [ke, va] of v) {
+            console.log('###' + ke + ' -> ' + va);
+        }
+    }
+}

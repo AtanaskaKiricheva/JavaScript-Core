@@ -1,0 +1,27 @@
+
+function result(input) {
+
+    let regularMap = new Map();
+
+    for (let line of input) {
+        line = line.split(' : ');
+        let productName = line[0];
+        let productPrice = Number(line[1]);
+
+        regularMap.set(productName, productPrice);
+    }
+
+    let sortedMap = new Map([...regularMap.entries()].sort());
+
+    let letterToPrint = '';
+    for (let item of sortedMap) {
+        let letter = item[0].split('')[0];
+        if (letterToPrint !== letter) {
+            letterToPrint = letter;
+            console.log(letter);
+        }
+        if (letterToPrint === letter) {
+            console.log(item[0]+ ': '+ item[1]);
+        }
+    }
+}

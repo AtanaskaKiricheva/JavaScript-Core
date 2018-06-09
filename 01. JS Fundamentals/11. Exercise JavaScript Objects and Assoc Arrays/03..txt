@@ -1,0 +1,29 @@
+function result(input) {
+    let data = new Map();
+    let result = new Map();
+
+    for (let i = 0; i < input.length; i++) {
+        let line = input[i].split(' => ');
+        let juice = line[0];
+        let quantity = Number(line[1]);
+
+        if (!data.has(juice)) {
+            data.set(juice, quantity);
+        }
+        else {
+            data.set(juice,data.get(juice)+quantity);
+        }
+
+        for (let [key, value] of data) {
+            while (value >= 1000) {
+                if (!result.has(key)) {
+                    result.set(key, 0);
+                }
+                data.set(key,data.get(key) -1000);
+                value-=1000;
+                result.set(key, result.get(key) + 1);
+            }
+        }
+    }
+    result.forEach((v,k)=> console.log(k+' => '+v));
+}
