@@ -1,4 +1,4 @@
-function   (){
+function solve() {
     let robot = {
         protein: 0,
         carbohydrate: 0,
@@ -19,7 +19,7 @@ function   (){
             fat: 7,
             flavour: 3
         },
-        omlet: {
+        omelet: {
             protein: 5,
             flavour: 1,
             fat: 1
