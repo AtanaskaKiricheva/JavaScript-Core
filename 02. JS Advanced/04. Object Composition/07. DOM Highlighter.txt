@@ -1,0 +1,25 @@
+
+function result(selector) {
+    let path = 0;
+    let deepestElement;
+    let allElements = $(`${selector} *:not(:has(*))`);
+    allElements.each(function (index, element) {
+        let currentLevel = 0;
+        let originalLeaf = element;
+        while (element) {
+            currentLevel++;
+            element = $(element).parent()[0];
+        }
+        if (currentLevel > path) {
+            path = currentLevel;
+            deepestElement = originalLeaf;
+        }
+    });
+    let selectedElement = $(selector)[0];
+
+    while (deepestElement && deepestElement!==selectedElement){
+       $(deepestElement).addClass('highlight');
+       deepestElement = $(deepestElement).parent()[0];
+    }
+    $(selector).addClass('highlight');
+}

@@ -1,0 +1,19 @@
+'use strict';
+let worker = result({ weight: 80,
+    experience: 1,
+    bloodAlcoholLevel: 0,
+    handsShaking: true }
+);
+
+function result(input) {
+
+    if (input.handsShaking === false) {
+        return (input);
+    } else {
+        input.bloodAlcoholLevel += (input.weight * 0.1) * input.experience;
+        input.handsShaking = false;
+        return (input);
+    }
+}
+
+console.log(worker);
