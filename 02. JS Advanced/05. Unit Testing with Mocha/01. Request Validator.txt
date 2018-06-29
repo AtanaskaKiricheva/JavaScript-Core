@@ -1,0 +1,51 @@
+function validateRequest(obj) {
+    let validMethods = ['GET', 'POST', 'DELETE', 'CONNECT'];
+    let validVersions = ['HTTP/0.9', 'HTTP/1.0', 'HTTP/1.1', 'HTTP/2.0'];
+    let uriRegex = /^([a-zA-Z0-9.]+)$/g;
+    let messageRegex = /^[^<>\\&'"]+$/g;
+    let mapPropertyUpperFirstLetter = {
+        method: "Method",
+        uri: "URI",
+        version: "Version",
+        message: "Message"
+    };
+
+    let validate = {
+        method: () => {
+            if (!obj.hasOwnProperty('method')) {
+                return false;
+            }
+            return validMethods.includes(obj.method);
+        },
+        uri: () => {
+            if (!obj.hasOwnProperty('uri')) {
+                return false;
+            }
+            if (obj.uri === '') {
+                return false;
+            }
+            return uriRegex.test(obj.uri);
+        },
+        version: () => {
+            if (!obj.hasOwnProperty('version')) {
+                return false;
+            }
+            return validVersions.includes(obj.version);
+        },
+        message: () => {
+            if (!obj.hasOwnProperty('message')) {
+                return false;
+            }
+            if (obj.message === '') {
+                return true;
+            }
+            return messageRegex.test(obj.message);
+        }
+    };
+    for (let prop in validate) {
+        if (!validate[prop]()) {
+            throw new Error(`Invalid request header: Invalid ${mapPropertyUpperFirstLetter[prop]}`)
+        }
+    }
+    return obj;
+}

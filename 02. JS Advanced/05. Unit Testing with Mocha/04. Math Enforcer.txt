@@ -1,0 +1,83 @@
+describe('mathEnforcer', function () {
+    describe('addFive', function () {
+        it('test1', function () {
+            expect(mathEnforcer.addFive("aaaaa")).to.equal(undefined, 'Function did not return the correct result!')
+        });
+        it('test2', function () {
+            expect(mathEnforcer.addFive({name:'aaaa'})).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.addFive(['aaaa'])).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.addFive(2)).to.equal(7, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.addFive(2.1)).to.equal(7.1, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.addFive(-5)).to.equal(0, 'Function did not return the correct message!')
+        });
+    });
+    describe('subtractTen', function () {
+        it('test1', function () {
+            expect(mathEnforcer.subtractTen("aaaaa")).to.equal(undefined, 'Function did not return the correct result!')
+        });
+        it('test2', function () {
+            expect(mathEnforcer.subtractTen({name:'aaaa'})).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.subtractTen(['aaaa'])).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.subtractTen(2)).to.equal(-8, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.subtractTen(2.1)).to.equal(-7.9, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.subtractTen(-5)).to.equal(-15, 'Function did not return the correct message!')
+        });
+    });
+    describe('sum', function () {
+        it('test1', function () {
+            expect(mathEnforcer.sum("aaaaa")).to.equal(undefined, 'Function did not return the correct result!')
+        });
+        it('test2', function () {
+            expect(mathEnforcer.sum({name:'aaaa'})).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(['aaaa'])).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(2)).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(2.1)).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(2,5)).to.equal(7, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(-5)).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(-5,-5)).to.equal(-10, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum("aaa",-5)).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(-5,"aaa")).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(-5,{name:"aaaa"})).to.equal(undefined, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(5,5)).to.equal(10, 'Function did not return the correct message!')
+        });
+        it('test8', function () {
+            expect(mathEnforcer.sum(5.5,5.5)).to.equal(11, 'Function did not return the correct message!')
+        });
+    });
+});

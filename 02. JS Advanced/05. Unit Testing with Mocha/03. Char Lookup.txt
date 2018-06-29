@@ -1,0 +1,27 @@
+describe ('lookupChar', function () {
+   it('test1',function () {
+       expect(lookupChar(13,0)).to.equal(undefined,'Function did not return the correct result!')
+   });
+    it('test2', function () {
+        expect(lookupChar('pesho','gosho')).to.equal(undefined,'Function did not return the correct message!')
+    });
+    it('test3', function () {
+        expect(lookupChar("gosho",13)).to.equal('Incorect index','Function did not return the correct value!')
+    });
+    it('test4', function () {
+        expect(lookupChar("stamat",-1)).to.equal("Incorrect index", 'Function did not return the correct value!')
+    });
+    it('test5', function () {
+        expect(lookupChar("pesho",5)).to.equal("Incorrect index", 'Function did not return the correct value!')
+    });
+    it('test6', function () {
+        expect(lookupChar("pesho",0)).to.equal("p", 'Function did not return the correct result!')
+    });
+    it('test7', function () {
+        expect(lookupChar("stamat",3)).to.equal("m", 'Function did not return the correct result!')
+    });
+    it('test8', function () {
+        expect(lookupChar("pesho",3.12)).to.equal(undefined, 'Function did not return the correct message!')
+    });
+    
+});
