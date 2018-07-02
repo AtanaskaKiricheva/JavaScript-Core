@@ -1,0 +1,29 @@
+function solve(ticketDescriptions, sortingCriteria) {
+    class Ticket {
+        constructor(destination, price, status) {
+            this.destination = destination;
+            this.price = price;
+            this.status = status;
+        }
+    }
+
+    let unsorted = [];
+
+    for (let line of ticketDescriptions) {
+        let destinationName = line.split('|')[0];
+        let price = Number(line.split('|')[1]);
+        let status = line.split('|')[2];
+
+        unsorted.push(new Ticket(destinationName, price, status))
+    }
+    let sorted;
+
+    switch (sortingCriteria) {
+        case 'destination': sorted = unsorted.sort((a, b) => a.destination.localeCompare(b.destination));break;
+        case 'price': sorted = unsorted.sort((a, b) => a.price - b.price);break;
+        case 'status': sorted = unsorted.sort((a, b) => a.status.localeCompare(b.status));break;
+    }
+
+    return sorted;
+
+}

@@ -1,0 +1,34 @@
+class CheckingAccount {
+    constructor(clientId, email, firstName, lastName) {
+        let namesPattern = new RegExp('\\b[a-zA-Z]{3,20}\\b');
+        let emailPattern = new RegExp('[A-Za-z0-9]+@[a-zA-Z]+\\.[a-zA-Z]+');
+
+        if (+clientId.length !== 6) {
+            throw TypeError("Client ID must be a 6-digit number");
+        } else {
+            this.clientId = clientId;
+        }
+        if (!emailPattern.test(email)) {
+            throw TypeError("Invalid e-mail");
+        } else {
+            this.email = email;
+        }
+        if (firstName.length < 3 || firstName > 20) {
+            throw TypeError("First name must be between 3 and 20 characters long");
+        } else if (!namesPattern.test(firstName)) {
+            throw TypeError("First name must contain only Latin characters");
+        } else {
+            this.firstName = firstName;
+        }
+
+        if (lastName.length < 3 || lastName > 20) {
+            throw TypeError("Last name must be between 3 and 20 characters long");
+        } else if (!namesPattern.test(lastName)) {
+            throw TypeError("Last name must contain only Latin characters");
+        } else {
+            this.lastName = lastName;
+        }
+
+        this.products = [];
+    }
+}
