@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forecatser</title>
+    <style>
+        #content {
+            width: 400px;
+        }
+
+        #request {
+            text-align: center;
+        }
+
+        .bl {
+            width: 300px;
+        }
+
+        #current {
+            text-align: center;
+            font-size: 2em;
+        }
+
+        #upcoming {
+            text-align: center;
+        }
+
+        .condition {
+            text-align: left;
+            display: inline-block;
+        }
+
+        .symbol {
+            font-size: 4em;
+            display: inline-block;
+        }
+
+        .forecast-data {
+            display: block;
+        }
+
+        .upcoming {
+            display: inline-block;
+            margin: 1.5em;
+        }
+
+        .label {
+            margin-top: 1em;
+            font-size: 1.5em;
+            background-color: aquamarine;
+            font-weight: 400;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+</head>
+<body>
+<div id="content">
+    <div id="request">
+        <input id="location" class='bl' type="text">
+        <input id="submit" class="bl" type="button" value="Get Weather">
+    </div>
+    <div id="forecast" style="display:none">
+        <div id="current">
+            <div class="label">Current conditions</div>
+        </div>
+        <div id="upcoming">
+            <div class="label">Three-day forecast</div>
+        </div>
+    </div>
+</div>
+<script>
+    function attachEvents() {
+        let request = {
+            method: 'GET',
+            url: 'https://judgetests.firebaseio.com/locations.json',
+            success: handleSuccess,
+        };
+        $.ajax(request);
+
+        function handleSuccess(data) {
+            $('#submit').on('click', () => {
+                let input = $('#location').val();
+                let code = data.filter(obj => obj.name === input)[0].code;
+                let currentConditionRequest = {
+                    method: 'GET',
+                    url: `https://judgetests.firebaseio.com/forecast/today/${code}.json`,
+                    success: showCurrentCondition,
+                };
+                $.ajax(currentConditionRequest);
+                let threeDayForecast = {
+                    method: 'GET',
+                    url: `https://judgetests.firebaseio.com/forecast/upcoming/${code}.json`,
+                    success: showThreeDayForecast
+                };
+                $.ajax(threeDayForecast);
+
+                function showCurrentCondition(data) {
+                    $('#current').find('span').remove();
+                    let condition = data.forecast.condition;
+                    let location = data.name;
+                    let degrees = `${data.forecast.low}&#176;/${data.forecast.high}&#176;`;
+                    let symbol;
+                    switch (condition) {
+                        case 'Sunny':
+                            symbol = '&#x2600;';
+                            break;
+                        case 'Partly sunny':
+                            symbol = '&#x26C5;';
+                            break;
+                        case 'Overcast':
+                            symbol = '&#x2601;';
+                            break;
+                        case 'Rain':
+                            symbol = '&#x2614;';
+                            break;
+                    }
+                    $('#forecast').show();
+                    let content = $('<span class="condition">')
+                        .append($(`<span class="forecast-data">${location}</span>`))
+                        .append($(`<span class="forecast-data">${degrees}</span>`))
+                        .append($(`<span class="forecast-data">${condition}</span>`));
+                    $('#current')
+                        .append($(`<span class="condition symbol">${symbol}</span>`))
+                        .append(content);
+                }
+
+                function showThreeDayForecast(data) {
+                    $('#upcoming').find('span').remove();
+                    let condition1 = data.forecast[0].condition;
+                    let condition2 = data.forecast[1].condition;
+                    let condition3 = data.forecast[2].condition;
+
+                    function getSymbol(condition) {
+                        switch (condition) {
+                            case 'Sunny':return '&#x2600;';
+                            case 'Partly sunny':return'&#x26C5;';
+                            case 'Overcast':return '&#x2601;';
+                            case 'Rain':return '&#x2614;';
+                        }
+                    }
+                    let content1 = $('<span class="upcoming">')
+                        .append($(`<span class="symbol">${getSymbol(condition1)}</span>`))
+                        .append($(`<span class="forecast-data">${`${data.forecast[0].low}&#176;/${data.forecast[0].high}&#176;`}</span>`))
+                        .append($(`<span class="forecast-data">${condition1}</span>`));
+                    let content2 = $('<span class="upcoming">')
+                        .append($(`<span class="symbol">${getSymbol(condition2)}</span>`))
+                        .append($(`<span class="forecast-data">${`${data.forecast[1].low}&#176;/${data.forecast[1].high}&#176;`}</span>`))
+                        .append($(`<span class="forecast-data">${condition2}</span>`));
+                    let content3 = $('<span class="upcoming">')
+                        .append($(`<span class="symbol">${getSymbol(condition3)}</span>`))
+                        .append($(`<span class="forecast-data">${`${data.forecast[2].low}&#176;/${data.forecast[2].high}&#176;`}</span>`))
+                        .append($(`<span class="forecast-data">${condition3}</span>`));
+                    $('#upcoming').append(content1).append(content2).append(content3);
+
+                }
+
+            })
+        }
+    }
+
+    attachEvents();
+</script>
+</body>
+</html>
